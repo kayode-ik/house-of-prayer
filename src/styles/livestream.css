@@ -1,0 +1,85 @@
+/* === SECTION BASE === */
+.livestream-section {
+    background-color: #f9fafb; /* light gray background like your screenshot */
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* === CARD === */
+  .livestream-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 950px;
+    width: 100%;
+  }
+  
+  /* === IMAGE === */
+  .livestream-image img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  /* === CONTENT === */
+  .livestream-content {
+    flex: 1;
+  }
+  
+  .livestream-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  
+  .livestream-content p {
+    color: #4b5563;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* === ACTIONS === */
+  .livestream-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .past-link {
+    text-decoration: none;
+    color: #6b7280;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .past-link:hover {
+    color: #111827;
+  }
+  
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .livestream-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem;
+    }
+  
+    .livestream-image img {
+      width: 100%;
+      max-width: 320px;
+    }
+  
+    .livestream-actions {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+  

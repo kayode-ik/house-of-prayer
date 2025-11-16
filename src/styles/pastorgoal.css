@@ -1,0 +1,108 @@
+.pastor-goal-section {
+    position: relative;
+    background: url("/images/bible-bg-placeholder.jpg") center/cover no-repeat;
+    color: white;
+    padding: 6rem 1rem;
+    overflow: hidden;
+  }
+  
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 47, 0.8); /* dark navy overlay */
+    z-index: 1;
+  }
+  
+  .goal-container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* === IMAGE SECTION === */
+  .goal-image {
+    position: relative;
+    text-align: center;
+  }
+  
+  .goal-image img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .quote-mark {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #f97316; /* orange */
+  }
+  
+  .pastor-info {
+    background: #f97316;
+    color: white;
+    padding: 1rem 1.5rem;
+    display: inline-block;
+    border-radius: 6px;
+    text-align: left;
+    margin-top: -2.5rem;
+    margin-left: 1.5rem;
+    position: relative;
+  }
+  
+  .pastor-info h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  
+  .pastor-info p {
+    font-size: 0.9rem;
+    opacity: 0.95;
+  }
+  
+  /* === TEXT SIDE === */
+  .goal-text h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  
+  .goal-text p {
+    color: #d1d5db;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    max-width: 600px;
+  }
+  
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .goal-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  
+    .goal-text h2 {
+      font-size: 1.3rem;
+    }
+  
+    .pastor-info {
+      margin-left: 0;
+    }
+  
+    .goal-text p {
+      margin: 0 auto;
+    }
+  }
+  

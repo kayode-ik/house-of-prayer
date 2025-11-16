@@ -1,0 +1,58 @@
+/* === BASE BUTTON === */
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+  
+  /* === SIZES === */
+  .btn-sm {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .btn-md {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .btn-lg {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  /* === VARIANTS === */
+  .btn-primary {
+    background-color: #f97316; /* orange-500 */
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #ea580c; /* orange-600 */
+  }
+  
+  .btn-secondary {
+    background-color: white;
+    color: #f97316;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #fff3e0;
+  }
+  
+  .btn-outline {
+    border: 2px solid #f97316;
+    color: #f97316;
+    background: transparent;
+  }
+  
+  .btn-outline:hover {
+    background-color: #f97316;
+    color: white;
+  }
+  

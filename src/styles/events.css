@@ -1,0 +1,146 @@
+/* === BASE SECTION === */
+.events-section {
+    background-color: #f9fafb;
+    padding: 5rem 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .events-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  /* === LEFT SIDE === */
+  .events-intro .section-label {
+    text-transform: uppercase;
+    color: #6b7280;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .events-intro h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 1rem;
+  }
+  
+  .events-intro .section-desc {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 500px;
+  }
+  
+  /* === GRID OF EVENTS === */
+  .events-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  /* === CARD === */
+  .event-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .event-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* === IMAGE & DATE BADGE === */
+  .event-image {
+    position: relative;
+  }
+  
+  .event-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .event-date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #111827;
+    color: #fff;
+    border-radius: 6px;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+  }
+  
+  .event-date .day {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: block;
+  }
+  
+  .event-date .month {
+    font-size: 0.8rem;
+    opacity: 0.9;
+  }
+  
+  /* === CONTENT === */
+  .event-content {
+    padding: 1.5rem;
+  }
+  
+  .event-content h3 {
+    color: #111827;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .event-time,
+  .event-location {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .event-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: #f97316;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  
+  .event-btn:hover {
+    background-color: #ea580c;
+  }
+  
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .events-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .events-intro {
+      text-align: center;
+    }
+  }
+  

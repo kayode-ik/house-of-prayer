@@ -1,0 +1,111 @@
+/* === BASE SECTION === */
+.services-section {
+    background-color: #f9fafb;
+    padding: 5rem 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .services-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  
+  /* === LEFT TEXT AREA === */
+  .services-text .section-label {
+    text-transform: uppercase;
+    color: #6b7280;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .services-text h2 {
+    font-size: 2rem;
+    color: #111827;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  
+  .services-text .section-desc {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 500px;
+  }
+  
+  /* === GRID === */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .service-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .service-card:hover {
+    background-color: #f3f4f6;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #1f2937;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  .service-card h3 {
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  
+  .service-card p {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .services-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .services-text {
+      text-align: center;
+    }
+  
+    .services-text .section-desc {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  

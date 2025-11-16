@@ -1,0 +1,57 @@
+/* === SECTION BASE === */
+.current-series {
+    background-color: #f9fafb;
+    padding: 5rem 1rem;
+    text-align: center;
+  }
+  
+  /* === CONTENT === */
+  .series-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .series-label {
+    text-transform: uppercase;
+    color: #6b7280;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .series-content h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 1rem;
+  }
+  
+  .series-desc {
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* === NO POSTS === */
+  .no-posts {
+    color: #9ca3af;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+  
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .series-content h2 {
+      font-size: 1.5rem;
+    }
+  
+    .series-desc {
+      font-size: 0.95rem;
+    }
+  }
+  
