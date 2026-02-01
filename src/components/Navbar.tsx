@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import "@/styles/navbar.css";
 
+
+
 const Navbar = () => {
   const pathname = usePathname();
 
@@ -24,11 +26,12 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Events", href: "/events" },
-    { name: "About", href: "/about" },
-    { name: "Give Online", href: "/give" },
-    { name: "Past Messages", href: "/past-messages" },
-    { name: "Contact", href: "/contact" },
+    { name: "Live", href: "#livestream" },
+    { name: "Services", href: "#services" },
+    { name: "Series", href: "#series" },
+    // { name: "Give", href: "#donate" },
+    { name: "About", href: "#about" },
+    // { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -52,7 +55,7 @@ const Navbar = () => {
               <Link href={link.href}>{link.name}</Link>
             </li>
           ))}
-          <Link href="/donate" className="btn-donate">
+          <Link href="#donate" className="btn-donate">
             Donate
           </Link>
         </ul>
@@ -76,7 +79,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
-            href="/donate"
+            href="#donate"
             className="btn-donate"
             onClick={() => setMenuOpen(false)}
           >

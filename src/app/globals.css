@@ -18,4 +18,7 @@ body {
 html,
 body {
   font-family: "Jost", sans-serif;
+  scroll-behavior: smooth;
+
 }
+

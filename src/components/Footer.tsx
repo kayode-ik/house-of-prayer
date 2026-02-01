@@ -22,13 +22,14 @@ const Footer = () => {
           {/* Column 1 */}
           <div className="footer-col">
             <h4 className="footer-title">
-              <span className="footer-icon">⛪</span> CHURCH
+              <span className="footer-icon">⛪</span> House Of Prayer Ministry
             </h4>
             <p>
-              A church in New York, NY where you can connect with your destiny.
+              House of prayer is a church of God's people called to bring about
+              revival to the community through prayer and righteous living.
             </p>
-            <p>1773 Turkey Pen Road, New York, NY 10013</p>
-            <p className="footer-phone">1-800-123-4567</p>
+            <p>Youth Bourne Center Queens Road PE10 9DX Bourne Lincolnshire</p>
+            <p className="footer-phone">+44 7728 845394</p>
           </div>
 
           {/* Column 2 */}
@@ -65,9 +66,7 @@ const Footer = () => {
 
       {/* === BOTTOM STRIP === */}
       <div className="footer-bottom">
-        <p>
-          © 2025 House Of Prayer . All Rights Reserved
-        </p>
+        <p>© 2025 House Of Prayer . All Rights Reserved</p>
       </div>
     </footer>
   );

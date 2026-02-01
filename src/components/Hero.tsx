@@ -9,14 +9,12 @@ const Hero = () => {
       <div className="hero-content">
         <p className="top-text">Church Love, Faith Love</p>
 
-        <h1>
-          Welcome To <br /> House Of Prayer <br /> Bourne
+        <h1 className="uppercase">
+          Welcome To <br /> House Of Prayer  <br /> Bourne
         </h1>
 
         <p className="sub-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Urna
-          condimentum mattis pellentesque id nibh tortor.
+          A PLACE WHERE PRAYER MAKES ALL THINGS POSSIBLE
         </p>
 
         <Button

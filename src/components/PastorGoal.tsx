@@ -10,26 +10,29 @@ const PastorGoal = () => {
         {/* LEFT SIDE */}
         <div className="goal-image">
           <div className="quote-mark">❝</div>
-          <img src="/images/pastor-placeholder.jpg" alt="Pastor" />
+          <img src="/images/pastorImg.jpeg" alt="Pastor" />
           <div className="pastor-info">
-            <h4>Samuel Micheal </h4>
+            <h4>Pst Samuel Micheal </h4>
             <p>Outreach Ministries Leader</p>
           </div>
         </div>
 
         {/* RIGHT SIDE */}
         <div className="goal-text">
-          <h2>
-            Our goal is to reach the victims in our community who are under oppression from
-            people, addiction, or systemic systems. We work every day to help people build better lives.
+          <h2 style={{fontSize: "2rem"}}>
+            Our goal is to bring revival to our community through prayer, faith,
+            and righteous living.  <br /> We exist to proclaim the good news of Jesus
+            Christ and to demonstrate the love of God in practical and
+            life-changing ways.
           </h2>
           <p>
-            Donec enim diam vulputate ut pharetra. Sagittis id consectetur purus ut faucibus
-            pulvinar elementum integer enim. Ipsum suspendisse ultrices gravida dictum fusce ut
-            placerat orci nulla. Commodo ullamcorper a lacus vestibulum. Mattis vulputate enim nulla
-            aliquet porttitor lacus. Massa massa ultricies mi quis hendrerit dolor magna eget.
-            Tristique senectus et netus et malesuada fames ac. Libero justo laoreet sit amet cursus
-            sit amet dictum sit.
+            House of Prayer is a church committed to prayer as the foundation of
+            transformation. Guided by God’s Word and His commandments, we seek
+            to build lives, restore hope, and strengthen faith in every season.
+            We believe that through prayer, God makes all things possible. <br /> We
+            welcome you into an atmosphere of love, faith, and spiritual growth,
+            trusting that God will meet you, uplift you, and lead you into His
+            purpose.
           </p>
         </div>
       </div>

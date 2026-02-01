@@ -15,21 +15,36 @@ import LiveStream from "@/components/LiveStream";
 import Navbar from "@/components/Navbar";
 import PastorGoal from "@/components/PastorGoal";
 import Services from "@/components/Services";
-import { JSX } from "react";
-
+import { JSX, useRef } from "react";
 
 export default function Home(): JSX.Element {
+
+ 
   return (
     <main className="min-h-screen bg-gray-50">
       {/* <Navbar /> */}
-      <Hero />
-      <LiveStream />
-      <Services />
-      <CurrentSeries />
-      <Events />
-      <Donations />
-      <PastorGoal />
-      <AboutChurch />
+      {/* <section id="home"> */}
+        <Hero />
+      {/* </section> */}
+      <section id="livestream">
+        <LiveStream />
+      </section>
+      <section id="services">
+        <Services />
+      </section>
+      <section id="series">
+        <CurrentSeries />
+      </section>
+      {/* <Events /> */}
+      <section id="donate">
+        <Donations />
+      </section>
+      <section id="pastor">
+        <PastorGoal />
+      </section>
+      <section id="about">
+        <AboutChurch />
+      </section>
       {/* <Footer /> */}
     </main>
   );

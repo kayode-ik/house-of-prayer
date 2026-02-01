@@ -7,9 +7,9 @@ const AboutChurch = () => {
       <div className="about-container">
         {/* LEFT IMAGE SIDE */}
         <div className="about-image">
-          <img src="/images/pastors-placeholder.jpg" alt="Pastors" />
+          <img src="/images/pastorMRS.jpeg" alt="Pastors" />
           <div className="pastor-tag">
-            <h4>Aaron & Julia Green</h4>
+            <h4>Micheal & Lara Samuel</h4>
             <p>Senior Pastors of Church</p>
           </div>
         </div>
@@ -22,14 +22,18 @@ const AboutChurch = () => {
             Jesus & loves God and people
           </h2>
           <p className="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
-            ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+            House of prayer is a church of God's people called to bring about
+            revival to the community through prayer and righteous living. We
+            have a mandate to proclaim the good news of Jesus and show the love
+            of God to all. We are guided by the principles and commandments of
+            God and we obey them. We welcome you to this atmosphere of love and
+            faith and we pray that God will make all things possible for you
+            through prayer.
           </p>
 
-          <div className="signature">
+          {/* <div className="signature">
             <img src="/images/signature-placeholder.png" alt="Pastor Signature" />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
