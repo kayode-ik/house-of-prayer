@@ -19,7 +19,7 @@ const Hero = () => {
 
         <Button
           label="I’m New Here"
-          href="/about"
+          href="/#"
           variant="primary"
           size="md"
         />
