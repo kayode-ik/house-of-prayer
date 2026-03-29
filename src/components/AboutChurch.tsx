@@ -7,7 +7,7 @@ const AboutChurch = () => {
       <div className="about-container">
         {/* LEFT IMAGE SIDE */}
         <div className="about-image">
-          <img src="/images/pastorMRS.jpeg" alt="Pastors" />
+          {/* <img src="/images/pastorMRS.jpeg" alt="Pastors" /> */}
           <div className="pastor-tag">
             <h4>Micheal & Lara Samuel</h4>
             <p>Senior Pastors of Church</p>
