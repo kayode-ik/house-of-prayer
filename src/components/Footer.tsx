@@ -22,7 +22,10 @@ const Footer = () => {
           {/* Column 1 */}
           <div className="footer-col">
             <h4 className="footer-title">
-              <span className="footer-icon">⛪</span> House Of Prayer Ministry
+              <span className="footer-icon">
+                <img src="/images/hopLogo.png" alt="Church Logo" width={"50"}/>
+              </span>{" "}
+              House Of Prayer Ministry
             </h4>
             <p>
               House of prayer is a church of God's people called to bring about
@@ -66,7 +69,7 @@ const Footer = () => {
 
       {/* === BOTTOM STRIP === */}
       <div className="footer-bottom">
-        <p>© 2025 House Of Prayer . All Rights Reserved</p>
+        <p>© 2026 House Of Prayer . All Rights Reserved</p>
       </div>
     </footer>
   );

@@ -9,6 +9,7 @@ import AboutChurch from "@/components/AboutChurch";
 import CurrentSeries from "@/components/CurrentSeries";
 import Donations from "@/components/Donations";
 import Events from "@/components/Events";
+import FirstTimer from "@/components/FirstTimer";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import LiveStream from "@/components/LiveStream";
@@ -42,8 +43,11 @@ export default function Home(): JSX.Element {
       <section id="pastor">
         <PastorGoal />
       </section>
-      <section id="about">
+      {/* <section id="about">
         <AboutChurch />
+      </section> */}
+      <section id="first-timer">
+        <FirstTimer />
       </section>
       {/* <Footer /> */}
     </main>
