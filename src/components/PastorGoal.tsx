@@ -1,39 +1,34 @@
 import React from "react";
+import { Quote } from "lucide-react";
 import "@/styles/pastorgoal.css";
+import type { PastorGoalContent } from "@/types/content";
 
-const PastorGoal = () => {
+interface Props {
+  content: PastorGoalContent;
+}
+
+const PastorGoal = ({ content }: Props) => {
   return (
     <section className="pastor-goal-section">
-      <div className="overlay"></div>
-
+      <div className="overlay" />
       <div className="goal-container">
-        {/* LEFT SIDE */}
+        {/* LEFT — photo */}
         <div className="goal-image">
-          <div className="quote-mark">❝</div>
-          <img src="/images/pastorImg.jpeg" alt="Pastor" />
+          <div className="quote-mark">
+            <Quote size={36} color="#E8722A" />
+          </div>
+          <img src={content?.image} alt={content.name} />
           <div className="pastor-info">
-            <h4>Pst Samuel Micheal </h4>
-            <p>Outreach Ministries Leader</p>
+            <h4>{content.name}</h4>
+            <p>{content.title}</p>
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT — quote & body */}
         <div className="goal-text">
-          <h2 style={{fontSize: "2rem"}}>
-            Our goal is to bring revival to our community through prayer, faith,
-            and righteous living.  <br /> We exist to proclaim the good news of Jesus
-            Christ and to demonstrate the love of God in practical and
-            life-changing ways.
-          </h2>
-          <p>
-            House of Prayer is a church committed to prayer as the foundation of
-            transformation. Guided by God’s Word and His commandments, we seek
-            to build lives, restore hope, and strengthen faith in every season.
-            We believe that through prayer, God makes all things possible. <br /> We
-            welcome you into an atmosphere of love, faith, and spiritual growth,
-            trusting that God will meet you, uplift you, and lead you into His
-            purpose.
-          </p>
+          <h2 style={{ fontSize: "2rem" }}>{content.quote}</h2>
+          <p>{content.body1}</p>
+          <p>{content.body2}</p>
         </div>
       </div>
     </section>

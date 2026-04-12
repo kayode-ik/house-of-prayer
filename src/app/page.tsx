@@ -1,55 +1,78 @@
 /**
- * Home component that serves as the main entry point for the application.
- * It renders the Navbar and Hero components within a main container.
+ * Home page — House of Prayer Bourne
  *
- * @returns {JSX.Element} The rendered Home component.
+ * All content is sourced from /src/lib/content.ts.
+ * To connect a CMS, replace that file's export with an async fetch
+ * that returns the same SiteContent shape — no component changes needed.
  */
 
-import AboutChurch from "@/components/AboutChurch";
+import Benefits from "@/components/Benefits";
 import CurrentSeries from "@/components/CurrentSeries";
 import Donations from "@/components/Donations";
-import Events from "@/components/Events";
 import FirstTimer from "@/components/FirstTimer";
-import Footer from "@/components/Footer";
+import Gatherings from "@/components/Gatherings";
 import Hero from "@/components/Hero";
 import LiveStream from "@/components/LiveStream";
-import Navbar from "@/components/Navbar";
+import PageLayout from "@/components/PageLayout";
 import PastorGoal from "@/components/PastorGoal";
 import Services from "@/components/Services";
-import { JSX, useRef } from "react";
+import SoulWinningBanner from "@/components/SoulWinningBanner";
+import { getSiteContent } from "@/lib/content";
 
-export default function Home(): JSX.Element {
+export const revalidate = 60;
 
- 
+export default async function Home() {
+  const c = await getSiteContent();
+
   return (
-    <main className="min-h-screen bg-gray-50">
-      {/* <Navbar /> */}
-      {/* <section id="home"> */}
-        <Hero />
-      {/* </section> */}
+    <PageLayout>
+      {/* ── Hero ── */}
+      <div id="home" style={{ marginTop: -64 }}>
+        <Hero content={c.hero} />
+      </div>
+
+      {/* ── Soul Winning Banner (high-visibility, above the fold) ── */}
+      <SoulWinningBanner content={c.soulWinningBanner} />
+
+      {/* ── Live Stream ── */}
       <section id="livestream">
-        <LiveStream />
+        <LiveStream content={c.liveStream} />
       </section>
+
+      {/* ── Services ── */}
       <section id="services">
-        <Services />
+        <Services content={c.services} />
       </section>
+
+      {/* ── Benefits ── */}
+      <section id="benefits">
+        <Benefits content={c.benefits} />
+      </section>
+
+      {/* ── Weekly Gatherings ── */}
+      <section id="gatherings">
+        <Gatherings content={c.gatherings} />
+      </section>
+
+      {/* ── Current Series ── */}
       <section id="series">
-        <CurrentSeries />
+        <CurrentSeries content={c.currentSeries} />
       </section>
-      {/* <Events /> */}
+
+      {/* ── Donations / Fundraising ── */}
       <section id="donate">
-        <Donations />
+        <Donations content={c.donations} />
       </section>
+
+      {/* ── Pastor / Leadership ── */}
       <section id="pastor">
-        <PastorGoal />
+        <PastorGoal content={c.pastorGoal} />
       </section>
-      {/* <section id="about">
-        <AboutChurch />
-      </section> */}
+
+      {/* ── First Timer Form ── */}
       <section id="first-timer">
-        <FirstTimer />
+        <FirstTimer content={c.firstTimer} />
       </section>
-      {/* <Footer /> */}
-    </main>
+    </PageLayout>
   );
 }
