@@ -1,75 +1,94 @@
 import React from "react";
+import { MapPin, Facebook, Instagram, Youtube, Link } from "lucide-react";
 import "@/styles/footer.css";
+import type { FooterContent } from "@/types/content";
 
-const Footer = () => {
+interface Props {
+  content: FooterContent;
+}
+
+const socialIcon = (platform: string) => {
+  switch (platform) {
+    case "facebook":  return <Facebook  size={16} />;
+    case "instagram": return <Instagram size={16} />;
+    case "youtube":   return <Youtube   size={16} />;
+    default:          return <Link      size={16} />;
+  }
+};
+
+const Footer = ({ content }: Props) => {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer-section">
-      {/* === MAP SECTION === */}
-      {/* <div className="footer-map">
-        <iframe
-          title="Church Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.123456789!2d-122.47825548468172!3d37.81992977975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085816f74a5a5b5%3A0x7e54a2386b239dcb!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1616171123456!5m2!1sen!2sus"
-          width="100%"
-          height="300"
-          allowFullScreen
-          loading="lazy"
-        ></iframe>
-      </div> */}
-
-      {/* === MAIN FOOTER CONTENT === */}
       <div className="footer-content">
         <div className="footer-container">
-          {/* Column 1 */}
+
+          {/* Column 1 — Brand */}
           <div className="footer-col">
             <h4 className="footer-title">
               <span className="footer-icon">
-                <img src="/images/hopLogo.png" alt="Church Logo" width={"50"}/>
+                <img src="/images/hopLogo.png" alt="Church Logo" width={50} />
               </span>{" "}
               House Of Prayer Ministry
             </h4>
-            <p>
-              House of prayer is a church of God's people called to bring about
-              revival to the community through prayer and righteous living.
-            </p>
-            <p>Youth Bourne Center Queens Road PE10 9DX Bourne Lincolnshire</p>
-            <p className="footer-phone">+44 7728 845394</p>
+            <p>{content.description}</p>
+
+            {/* Address — MapPin icon replaces 📍 */}
+            <a href={content.mapsUrl} target="_blank" rel="noopener noreferrer"
+              style={{ color: "#a0aec0", fontSize: 13, textDecoration: "none", display: "flex", alignItems: "flex-start", gap: 6, marginBottom: 6, lineHeight: 1.5 }}>
+              <MapPin size={14} style={{ flexShrink: 0, marginTop: 2 }} color="#E8722A" />
+              {content.address}
+            </a>
+
+            {/* Phone — tap-to-call */}
+            <a href={`tel:${content.phone.replace(/\s/g, "")}`} className="footer-phone" style={{ textDecoration: "none" }}>
+              {content.phone}
+            </a>
+
+            {/* Social links — Lucide icons replace emojis */}
+            <div style={{ display: "flex", gap: 10, marginTop: 14 }}>
+              {content.socialLinks.map((s) => (
+                <a key={s.platform} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                  style={{ width: 36, height: 36, borderRadius: 8, background: "#1E3048", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", textDecoration: "none" }}>
+                  {socialIcon(s.platform)}
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Column 2 */}
+          {/* Column 2 — Gatherings */}
           <div className="footer-col">
             <h4>Weekly Gatherings</h4>
             <ul>
-              <li>All Events</li>
-              <li>City Heights Outreach</li>
-              <li>Sunday Gathering</li>
-              <li>The Dinner Table</li>
-              <li>Sunday Gathering</li>
+              {content.gatheringLinks.map((link) => (
+                <li key={link.label}><a href={link.href}>{link.label}</a></li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3 */}
+          {/* Column 3 — Useful Links */}
           <div className="footer-col">
             <h4>Useful Links</h4>
             <ul>
-              <li>Give</li>
-              <li>Contacts</li>
-              <li className="highlight">Privacy Policy</li>
-              <li>Services</li>
-              <li>Our Beliefs</li>
+              {content.usefulLinks.map((link) => (
+                <li key={link.label} className={link.highlight ? "highlight" : ""}>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 4 */}
+          {/* Column 4 — Donate */}
           <div className="footer-col footer-donate">
             <h4>See What God Can Do Through You.</h4>
-            <button className="donate-btn">Donate</button>
+            <a href="/donate" className="donate-btn" style={{ textDecoration: "none" }}>Donate</a>
           </div>
         </div>
       </div>
 
-      {/* === BOTTOM STRIP === */}
       <div className="footer-bottom">
-        <p>© 2026 House Of Prayer . All Rights Reserved</p>
+        <p>© {year} House Of Prayer Bourne. All Rights Reserved</p>
       </div>
     </footer>
   );

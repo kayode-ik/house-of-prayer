@@ -1,382 +1,131 @@
-'use client';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import PageLayout from "@/components/PageLayout";
+import { DynamicIcon } from "@/lib/iconMap";
+import { getAboutPage } from "@/lib/content";
 
-import Image from 'next/image';
-import { ReactNode } from 'react';
-import '@/styles/about-us.css'; // ⬅️ make sure this line is here
+export const revalidate = 60;
 
-/* --------------------------------- HERO --------------------------------- */
+const NAVY = "#0d1b2a";
+const ORANGE = "#E8722A";
+const GREY = "#6b7280";
 
-type HeroSectionProps = {
-  title: string;
-  subtitle?: string;
-  imageUrl: string;
-  overlayOpacity?: number; // 0 - 1
-  children?: ReactNode;
-};
-
-function HeroSection({
-  title,
-  subtitle,
-  imageUrl,
-  overlayOpacity = 0.65,
-  children,
-}: HeroSectionProps) {
+export default async function AboutPage() {
+  const c = await getAboutPage();
   return (
-    <section className="about-hero">
-      <div className="about-hero-image-wrapper">
-        <Image
-          src={imageUrl}
-          alt="About hero background"
-          fill
-          priority
-          className="about-hero-image"
-          sizes="100vw"
-        />
-        <div
-          className="about-hero-overlay"
-          style={{ opacity: overlayOpacity }}
-        />
-        <div className="about-hero-content">
-          <div className="about-hero-inner">
-            <h1 className="about-hero-title">{title}</h1>
-            {subtitle && <p className="about-hero-subtitle">{subtitle}</p>}
-            {children && <div className="about-hero-extra">{children}</div>}
+    <PageLayout>
+      {/* ── Hero ── */}
+      <section style={{ background: NAVY, padding: "80px 2rem 60px", textAlign: "center" }}>
+        <p style={{ color: ORANGE, fontSize: 12, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>
+          Who We Are
+        </p>
+        <h1 style={{ color: "#fff", fontWeight: 900, fontSize: "clamp(2rem, 5vw, 3.5rem)", marginBottom: 16 }}>
+          {c.hero.heading}
+        </h1>
+        <p style={{ color: "#A0AEC0", fontSize: 16, maxWidth: 560, margin: "0 auto" }}>
+          {c.hero.subheading}
+        </p>
+      </section>
+
+      {/* ── Our Story ── */}
+      <section style={{ background: "#fff", padding: "70px 2rem" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
+          <div style={{ borderRadius: 16, overflow: "hidden", position: "relative", aspectRatio: "4/3" }}>
+            <Image src={c.story.image} alt="House of Prayer community" fill style={{ objectFit: "cover" }} sizes="50vw" />
+          </div>
+          <div>
+            <p style={{ color: ORANGE, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 10 }}>{c.story.eyebrow}</p>
+            <h2 style={{ color: "#1a2235", fontWeight: 900, fontSize: "clamp(1.4rem, 2.5vw, 2rem)", marginBottom: 20 }}>{c.story.heading}</h2>
+            <p style={{ color: GREY, fontSize: 15, lineHeight: 1.8, marginBottom: 16 }}>{c.story.body1}</p>
+            <p style={{ color: GREY, fontSize: 15, lineHeight: 1.8 }}>{c.story.body2}</p>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-/* ------------------------------ INFO BLOCKS ------------------------------ */
-
-type InfoItem = {
-  title: string;
-  text: string;
-  icon?: ReactNode;
-};
-
-type InfoBlocksProps = {
-  items: InfoItem[];
-};
-
-function InfoBlocks({ items }: InfoBlocksProps) {
-  return (
-    <section className="about-info">
-      <div className="about-container">
-        <div className="about-info-grid">
-          {items.map((item, i) => (
-            <div key={i} className="about-info-card">
-              <div className="about-info-icon-wrapper">
-                {item.icon ?? <span aria-hidden>📍</span>}
-              </div>
-              <h3 className="about-info-title">{item.title}</h3>
-              <p className="about-info-text">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------------------- LEADERSHIP GRID ---------------------------- */
-
-type TeamMember = {
-  name: string;
-  role: string;
-  imageUrl: string;
-};
-
-type LeadershipSectionProps = {
-  heading: string;
-  subheading?: string;
-  team: TeamMember[];
-};
-
-function LeadershipSection({ heading, subheading, team }: LeadershipSectionProps) {
-  return (
-    <section className="about-leadership">
-      <div className="about-container">
-        <header className="about-section-header">
-          <p className="about-eyebrow">Our Team</p>
-          <h2 className="about-section-title">{heading}</h2>
-          {subheading && <p className="about-section-subtitle">{subheading}</p>}
-        </header>
-
-        <div className="about-leadership-grid">
-          {team.map((m, i) => (
-            <article key={i} className="about-leader-card">
-              <div className="about-leader-image-wrapper">
-                <Image
-                  src={m.imageUrl}
-                  alt={m.name}
-                  fill
-                  className="about-leader-image"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                />
-              </div>
-              <div className="about-leader-content">
-                <h3 className="about-leader-name">{m.name}</h3>
-                <p className="about-leader-role">{m.role}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ----------------------------- VISION SPLIT ------------------------------ */
-
-type VisionSectionProps = {
-  eyebrow?: string;
-  title: string;
-  text: string;
-  imageUrl: string;
-};
-
-function VisionSection({
-  eyebrow = 'Our Vision',
-  title,
-  text,
-  imageUrl,
-}: VisionSectionProps) {
-  return (
-    <section className="about-vision">
-      <div className="about-container">
-        <div className="about-vision-grid">
-          <div className="about-vision-image-wrapper">
-            <div className="about-vision-image-inner">
-              <Image
-                src={imageUrl}
-                alt="Vision image"
-                fill
-                className="about-vision-image"
-              />
-            </div>
-          </div>
-
-          <div className="about-vision-text">
-            <p className="about-eyebrow-light">{eyebrow}</p>
-            <h3 className="about-section-title-light">{title}</h3>
-            <p className="about-vision-body">{text}</p>
-
-            <ul className="about-vision-list">
-              <li>1. We seek unity in essential beliefs</li>
-              <li>2. We value liberty in non-essential beliefs</li>
-              <li>3. We pursue love in all things</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------ NEXT STEPS ------------------------------- */
-
-type Step = {
-  number: number;
-  title: string;
-  text: string;
-  imageUrl: string;
-};
-
-type NextStepsProps = {
-  eyebrow?: string;
-  title: string;
-  steps: Step[];
-};
-
-function NextSteps({ eyebrow = "What's next?", title, steps }: NextStepsProps) {
-  return (
-    <section className="about-next-steps">
-      <div className="about-container">
-        <header className="about-section-header">
-          <p className="about-eyebrow">{eyebrow}</p>
-          <h3 className="about-section-title">{title}</h3>
-          <p className="about-section-subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-            tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-          </p>
-        </header>
-
-        <div className="about-next-steps-grid">
-          {steps.map((s) => (
-            <article key={s.number} className="about-step-card">
-              <div className="about-step-badge">{s.number}</div>
-              <div className="about-step-image-wrapper">
-                <Image
-                  src={s.imageUrl}
-                  alt={s.title}
-                  fill
-                  className="about-step-image"
-                />
-              </div>
-              <div className="about-step-content">
-                <h4 className="about-step-title">{s.title}</h4>
-                <p className="about-step-text">{s.text}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------- STATS --------------------------------- */
-
-type Stat = { label: string; value: string | number };
-
-type StatsSectionProps = {
-  stats: Stat[];
-  ctaEyebrow?: string;
-  ctaTitle: string;
-  ctaButtonText: string;
-  onCta?: () => void;
-};
-
-function StatsSection({
-  stats,
-  ctaEyebrow = 'This Month',
-  ctaTitle,
-  ctaButtonText,
-  onCta,
-}: StatsSectionProps) {
-  return (
-    <section className="about-stats">
-      <div className="about-container">
-        <div className="about-stats-grid">
-          <div className="about-stats-list">
-            {stats.map((s, i) => (
-              <div key={i} className="about-stat-item">
-                <div className="about-stat-value">{s.value}</div>
-                <div className="about-stat-label">{s.label}</div>
+      {/* ── Mission, Vision, Values ── */}
+      <section style={{ background: NAVY, padding: "70px 2rem" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
+          <h2 style={{ color: "#fff", fontWeight: 900, fontSize: "clamp(1.4rem, 3vw, 2rem)", marginBottom: 48 }}>{c.mission.heading}</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24 }}>
+            {[
+              { label: "Vision",  value: c.mission.vision  },
+              { label: "Mission", value: c.mission.mission },
+              { label: "Values",  value: c.mission.values  },
+            ].map((item) => (
+              <div key={item.label} style={{ background: "#1E3048", borderRadius: 14, padding: "32px 24px", border: "1px solid rgba(255,255,255,0.07)" }}>
+                <p style={{ color: ORANGE, fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 14 }}>{item.label}</p>
+                <p style={{ color: "#E2E8F0", fontSize: 15, lineHeight: 1.7, margin: 0 }}>{item.value}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="about-stats-cta">
-            <p className="about-eyebrow">{ctaEyebrow}</p>
-            <h4 className="about-stats-title">{ctaTitle}</h4>
-            <button
-              onClick={onCta}
-              className="about-stats-button"
-            >
-              {ctaButtonText}
-            </button>
+      {/* ── Leadership ── */}
+      <section style={{ background: "#f7f8fa", padding: "70px 2rem" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <p style={{ color: GREY, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 10, textAlign: "center" }}>Meet the Team</p>
+          <h2 style={{ color: "#1a2235", fontWeight: 900, fontSize: "clamp(1.4rem, 3vw, 2rem)", marginBottom: 12, textAlign: "center" }}>{c.leaders.heading}</h2>
+          <p style={{ color: GREY, fontSize: 15, maxWidth: 560, margin: "0 auto 44px", lineHeight: 1.7, textAlign: "center" }}>{c.leaders.subheading}</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 32 }}>
+            {c.leaders.team.map((m, i) => (
+              <div key={i} style={{ background: "#fff", borderRadius: 16, overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", border: "1.5px solid #E2E8F0" }}>
+                <div style={{ position: "relative", height: 440 }}>
+                  <Image src={m.image} alt={m.name} fill style={{ objectFit: "cover", objectPosition: "center 15%" }} sizes="600px" />
+                </div>
+                <div style={{ padding: "24px 24px 28px" }}>
+                  <div style={{ display: "inline-block", background: ORANGE, color: "#fff", fontSize: 10, fontWeight: 800, padding: "3px 10px", borderRadius: 4, marginBottom: 10, letterSpacing: "0.06em" }}>
+                    {m.role}
+                  </div>
+                  <h3 style={{ color: "#1a2235", fontWeight: 800, fontSize: 18, marginBottom: 10 }}>{m.name}</h3>
+                  <p style={{ color: GREY, fontSize: 14, lineHeight: 1.65, margin: 0 }}>{m.bio}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-/* ------------------------------- PAGE VIEW ------------------------------- */
+      {/* ── What We Believe ── */}
+      <section style={{ background: "#fff", padding: "70px 2rem" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <h2 style={{ color: "#1a2235", fontWeight: 900, fontSize: "clamp(1.4rem, 3vw, 2rem)", marginBottom: 12, textAlign: "center" }}>{c.beliefs.heading}</h2>
+          <p style={{ color: GREY, fontSize: 15, maxWidth: 560, margin: "0 auto 44px", lineHeight: 1.7, textAlign: "center" }}>{c.beliefs.subheading}</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 18 }}>
+            {c.beliefs.items.map((b, i) => (
+              <div key={i} style={{ background: "#f7f8fa", borderRadius: 12, padding: "24px 20px", border: "1.5px solid #E2E8F0", display: "flex", gap: 14 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(232,114,42,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <DynamicIcon name={b.icon} size={20} color={ORANGE} />
+                </div>
+                <div>
+                  <h4 style={{ color: "#1a2235", fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{b.title}</h4>
+                  <p style={{ color: GREY, fontSize: 13, lineHeight: 1.6, margin: 0 }}>{b.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-export default function AboutPage() {
-  return (
-    <main className="about-page">
-      <HeroSection
-        title="About Us"
-        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        imageUrl="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop"
-        overlayOpacity={0.72}
-      />
-
-      <InfoBlocks
-        items={[
-          {
-            title: 'One Church. Multiple Locations.',
-            text: 'We are one family meeting across locations to reach our city.',
-            icon: <span aria-hidden>🗺️</span>,
-          },
-          {
-            title: 'Take Your Next Step.',
-            text: 'Join a small group, get baptized, or serve with a team.',
-            icon: <span aria-hidden>⏳</span>,
-          },
-          {
-            title: 'You Make a Difference.',
-            text: 'Your generosity and service are changing lives every week.',
-            icon: <span aria-hidden>🙌</span>,
-          },
-        ]}
-      />
-
-      <LeadershipSection
-        heading="Our Leadership"
-        subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
-        team={[
-          {
-            name: 'Willie Redd',
-            role: 'Senior Pastor',
-            imageUrl:
-              'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop',
-          },
-          {
-            name: 'Brent & Ophelia Truitt',
-            role: 'Youth Leaders',
-            imageUrl:
-              'https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=1200&auto=format&fit=crop',
-          },
-          {
-            name: 'Patrick Roberts',
-            role: 'Elder',
-            imageUrl:
-              'https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop',
-          },
-        ]}
-      />
-
-      <VisionSection
-        title="What We Believe"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        imageUrl="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop"
-      />
-
-      <NextSteps
-        title="Next Steps"
-        steps={[
-          {
-            number: 1,
-            title: 'Get Connected',
-            text: 'Join the family and discover your place here.',
-            imageUrl:
-              'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1200&auto=format&fit=crop',
-          },
-          {
-            number: 2,
-            title: 'Get Involved',
-            text: 'Serve on a team and be part of the mission.',
-            imageUrl:
-              'https://images.unsplash.com/photo-1593113598332-cd9fcdf00028?q=80&w=1200&auto=format&fit=crop',
-          },
-          {
-            number: 3,
-            title: 'Grow',
-            text: 'Take classes and grow in your faith.',
-            imageUrl:
-              'https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=1200&auto=format&fit=crop',
-          },
-        ]}
-      />
-
-      <StatsSection
-        stats={[
-          { label: 'Volunteers', value: 759 },
-          { label: 'Pounds of Food Given', value: '23,090' },
-          { label: 'Bibles Given Out', value: 356 },
-          { label: 'Families Served', value: '1,640' },
-        ]}
-        ctaEyebrow="This November"
-        ctaTitle="Become a part of something great"
-        ctaButtonText="Contact Us"
-        onCta={() => (window.location.href = '/contact')}
-      />
-    </main>
+      {/* ── Stats + CTA ── */}
+      <section style={{ background: NAVY, padding: "70px 2rem" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, marginBottom: 48, textAlign: "center" }}>
+            {c.stats.map((s, i) => (
+              <div key={i}>
+                <p style={{ color: ORANGE, fontWeight: 900, fontSize: "2rem", margin: 0 }}>{s.value}</p>
+                <p style={{ color: "#A0AEC0", fontSize: 13, margin: "6px 0 0" }}>{s.label}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <Link href="/contact" style={{ background: ORANGE, color: "#fff", padding: "14px 36px", borderRadius: 8, textDecoration: "none", fontWeight: 700, fontSize: 15 }}>
+              Get in Touch →
+            </Link>
+          </div>
+        </div>
+      </section>
+    </PageLayout>
   );
 }

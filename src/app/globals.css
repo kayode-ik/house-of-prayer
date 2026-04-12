@@ -19,6 +19,171 @@ html,
 body {
   font-family: "Jost", sans-serif;
   scroll-behavior: smooth;
-
 }
+
+/* ════════════════════════════════════════════════════════════════
+   DARK MODE
+   Toggled by adding / removing the `dark` class on <html>
+   ═══════════════════════════════════════════════════════════════ */
+
+html.dark body,
+html.dark main {
+  background: #0f172a;
+}
+
+/* All page sections become dark */
+html.dark section {
+  background: #0f172a !important;
+}
+
+/* Cards, panels, content boxes */
+html.dark section div[style*="background"] {
+  background: #1e293b !important;
+}
+
+/* Preserve orange badge backgrounds (e.g. "Senior Pastor" pill) */
+html.dark section div[style*="E8722A"],
+html.dark section div[style*="f97316"],
+html.dark section span[style*="E8722A"],
+html.dark section span[style*="f97316"] {
+  background: #E8722A !important;
+  color: #fff !important;
+}
+
+/* Preserve rgba orange tint (icon wrapper backgrounds) */
+html.dark section div[style*="rgba(232"] {
+  background: rgba(232, 114, 42, 0.18) !important;
+}
+
+/* Headings */
+html.dark section h1,
+html.dark section h2,
+html.dark section h3,
+html.dark section h4,
+html.dark section h5 {
+  color: #f1f5f9 !important;
+}
+
+/* Strong / bold text with dark inline colors */
+html.dark section strong,
+html.dark section b {
+  color: #f1f5f9 !important;
+}
+
+/* Body / description text */
+html.dark section p {
+  color: #94a3b8 !important;
+}
+
+/* Preserve orange eyebrow / accent text */
+html.dark section p[style*="E8722A"],
+html.dark section p[style*="rgb(232"],
+html.dark section p[style*="f97316"] {
+  color: #E8722A !important;
+}
+
+/* Links inside sections */
+html.dark section a {
+  color: #94a3b8;
+}
+
+/* Card borders */
+html.dark section div[style*="border"] {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Inputs and textareas (contact form etc.) */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Footer */
+html.dark footer {
+  background: #020817 !important;
+}
+
+/* ── CSS-class component overrides ─────────────────────────── */
+
+/* Services cards */
+html.dark .services-section {
+  background-color: #0f172a !important;
+}
+html.dark .services-text h2,
+html.dark .services-text .section-label { color: #f1f5f9 !important; }
+html.dark .services-text .section-desc  { color: #94a3b8 !important; }
+html.dark .service-card {
+  background: #1e293b !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+html.dark .service-card h3 { color: #f1f5f9 !important; }
+html.dark .service-card p  { color: #94a3b8 !important; }
+html.dark .icon {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #e2e8f0 !important;
+}
+
+/* Livestream card */
+html.dark .livestream-section { background-color: #0f172a !important; }
+html.dark .livestream-card    { background: #1e293b !important; box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important; }
+html.dark .livestream-content h2,
+html.dark .livestream-content h3 { color: #f1f5f9 !important; }
+html.dark .livestream-content p  { color: #94a3b8 !important; }
+html.dark .livestream-content strong { color: #f1f5f9 !important; }
+
+/* About church section */
+html.dark .about-church-section { background: #0f172a !important; }
+html.dark .about-church-section h2 { color: #f1f5f9 !important; }
+html.dark .about-church-section p  { color: #94a3b8 !important; }
+
+/* Current Series */
+html.dark .current-series { background-color: #0f172a !important; }
+html.dark .current-series h2,
+html.dark .current-series h3 { color: #f1f5f9 !important; }
+html.dark .current-series p  { color: #94a3b8 !important; }
+
+/* Donations */
+html.dark .donations-section { background-color: #0f172a !important; }
+html.dark .donations-section h2,
+html.dark .donations-section h3,
+html.dark .donations-section h4 { color: #f1f5f9 !important; }
+html.dark .donations-section p  { color: #94a3b8 !important; }
+html.dark .donations-section [class*="card"],
+html.dark .donations-section [class*="box"] {
+  background: #1e293b !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* Events / Gatherings */
+html.dark .events-section { background-color: #0f172a !important; }
+html.dark .events-section h2,
+html.dark .events-section h3 { color: #f1f5f9 !important; }
+html.dark .events-section p  { color: #94a3b8 !important; }
+html.dark .events-section [class*="card"] {
+  background: #1e293b !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* Contact page */
+html.dark .contact-page { background: #0f172a !important; }
+html.dark .contact-page h1,
+html.dark .contact-page h2,
+html.dark .contact-page h3 { color: #f1f5f9 !important; }
+html.dark .contact-page p   { color: #94a3b8 !important; }
+html.dark .contact-page [class*="card"],
+html.dark .contact-page [class*="form"] {
+  background: #1e293b !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* PastorGoal — dark overlay section, already dark — just lighten text */
+html.dark .pastorgoal-section p { color: #cbd5e1 !important; }
 

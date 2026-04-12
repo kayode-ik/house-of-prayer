@@ -1,16 +1,22 @@
 import React from "react";
 import "@/styles/currentseries.css";
+import type { CurrentSeriesContent } from "@/types/content";
 
-const CurrentSeries = () => {
+interface Props {
+  content: CurrentSeriesContent;
+}
+
+const CurrentSeries = ({ content }: Props) => {
   return (
     <section className="current-series">
       <div className="series-content">
-        <p className="series-label">Current Series</p>
-        <h2>Hope for Tomorrow</h2>
-        <p className="series-desc">
-          Get caught up with the current message series! Turpis massa sed elementum tempus egestas sed sed risus pretium.
+        <p className="series-label">{content.eyebrow}</p>
+        <h2>{content.title}</h2>
+        <p className="series-desc">{content.description}</p>
+        {/* Sermon posts will render here once connected to a CMS sermon manager */}
+        <p className="no-posts" style={{ fontStyle: "italic", color: "#9CA3AF" }}>
+          Sermon posts coming soon — connect your CMS to display messages here.
         </p>
-        <p className="no-posts">No posts</p>
       </div>
     </section>
   );
